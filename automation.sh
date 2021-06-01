@@ -48,6 +48,9 @@ s3_bucket="upgrad-anshul"
 aws s3 \
 cp /tmp/${myname}-httpd-logs-${timestamp}.tar \
 s3://${s3_bucket}/${myname}-httpd-logs-${timestamp}.tar
+szof=`du /tmp/${myname}-httpd-logs-${timestamp}.tar | awk '{print $1}'`
+
+echo -e "httpd-logs\t${timestamp}\t tar\t${szof}\n" >> /var/www/html/inventory.html
 
 
 
